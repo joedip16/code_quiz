@@ -30,7 +30,11 @@ var questions = [
     },
 ];
 
-
+function questionBuilder() {
+    if (index >= questions.length) {
+        endGame();
+        return;
+    }
 
 
 
@@ -45,6 +49,7 @@ console.log('index', index)
         answerButton.innerHTML = questions[index].answers[i];
         answerButton.setAttribute("value", questions[index].answers[i])
         questionsScreen.appendChild(answerButton)
+    
 
 
 
@@ -54,13 +59,30 @@ startBtn.addEventListener("click", function () {
     questionsScreen.style.display = "block";
     questionBuilder();
 
+    answerButton.addEventListener("click", function (event) {
+        console.log(event.target.value)
+        if (event.target.value === questions[index].correctAnswer) {
+            score++
+            console.log("correct")
+            console.log(score)
+            
+        }
+        else if (event.target.value !== questions[index].correctAnswer) {
+            console.log("incorrect")
+        } 
+        
+            index++;
+        questionBuilder();
+        
 
-
-
-
-
-
-
-
-
+    })
 }
+    
+
+
+
+
+
+
+
+
