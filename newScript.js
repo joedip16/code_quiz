@@ -6,6 +6,8 @@ var gameOverScreen = document.getElementById("game-over-screen");
 var answers = []
 var index = 0
 var score = 0
+var secondsLeft = 60
+var timeEl = document.querySelector(".time")
 
 var questions = [
     {
@@ -35,7 +37,6 @@ function questionBuilder() {
         endGame();
         return;
     }
-    console.log('index', index)
     console.log('questions object', questions[index])
     questionsScreen.innerHTML = questions[index].q         
     for (var i = 0; i < questions[index].answers.length; i++) {
@@ -69,11 +70,27 @@ startBtn.addEventListener("click", function () {
     console.log("button clicked")
     startScreen.style.display = "none"
     questionsScreen.style.display = "block";
+    function setTime(){
+        var timerInterval = setInterval
+        (function() {
+            secondsLeft--;
+            timeEl.textContent =
+            secondsLeft
+            if (secondsLeft === 0){
+                clearInterval(timerInterval)
+                endgame()
+            }
+
+        }, 1000)
+        
+    }
+    setTime();
     questionBuilder();
 })
 
 function endGame() {
     console.log("game over!")
     questionsScreen.style.display = "none";
-    gameOverScreen.innerHTML = "Game Over! Your score is " + score 
+    gameOverScreen.innerHTML = "Game Over! Your score is " + score + "/" + questions.length
 }
+
