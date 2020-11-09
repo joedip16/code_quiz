@@ -35,13 +35,7 @@ function questionBuilder() {
         endGame();
         return;
     }
-
-
-
-
-
-
-console.log('index', index)
+    console.log('index', index)
     console.log('questions object', questions[index])
     questionsScreen.innerHTML = questions[index].q         
     for (var i = 0; i < questions[index].answers.length; i++) {
@@ -49,8 +43,26 @@ console.log('index', index)
         answerButton.innerHTML = questions[index].answers[i];
         answerButton.setAttribute("value", questions[index].answers[i])
         questionsScreen.appendChild(answerButton)
-    
 
+        answerButton.addEventListener("click", function (event) {
+            console.log(event.target.value)
+            if (event.target.value === questions[index].correctAnswer) {
+                score++
+                console.log("correct")
+                console.log(score)
+                
+            }
+            else if (event.target.value !== questions[index].correctAnswer) {
+                console.log("incorrect")
+            } 
+            
+                index++;
+            questionBuilder();
+            
+
+        })
+    }
+}
 
 
 startBtn.addEventListener("click", function () {
@@ -58,31 +70,10 @@ startBtn.addEventListener("click", function () {
     startScreen.style.display = "none"
     questionsScreen.style.display = "block";
     questionBuilder();
+})
 
-    answerButton.addEventListener("click", function (event) {
-        console.log(event.target.value)
-        if (event.target.value === questions[index].correctAnswer) {
-            score++
-            console.log("correct")
-            console.log(score)
-            
-        }
-        else if (event.target.value !== questions[index].correctAnswer) {
-            console.log("incorrect")
-        } 
-        
-            index++;
-        questionBuilder();
-        
-
-    })
+function endGame() {
+    console.log("game over!")
+    questionsScreen.style.display = "none";
+    gameOverScreen.innerHTML = "Game Over! Your score is " + score 
 }
-    
-
-
-
-
-
-
-
-
