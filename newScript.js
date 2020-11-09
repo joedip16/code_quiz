@@ -36,8 +36,31 @@ var questions = [
 
 
 
+
+console.log('index', index)
+    console.log('questions object', questions[index])
+    questionsScreen.innerHTML = questions[index].q         
+    for (var i = 0; i < questions[index].answers.length; i++) {
+        var answerButton = document.createElement("BUTTON");
+        answerButton.innerHTML = questions[index].answers[i];
+        answerButton.setAttribute("value", questions[index].answers[i])
+        questionsScreen.appendChild(answerButton)
+
+
+
 startBtn.addEventListener("click", function () {
     console.log("button clicked")
     startScreen.style.display = "none"
     questionsScreen.style.display = "block";
     questionBuilder();
+
+
+
+
+
+
+
+
+
+
+}
