@@ -29,3 +29,15 @@ var questions = [
         correctAnswer: "Flyers"
     },
 ];
+
+
+
+
+
+
+
+startBtn.addEventListener("click", function () {
+    console.log("button clicked")
+    startScreen.style.display = "none"
+    questionsScreen.style.display = "block";
+    questionBuilder();
