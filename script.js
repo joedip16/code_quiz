@@ -21,9 +21,9 @@ var score = 0;
 
 var questions = [
     {q: "What is the name of the Philadelphia NFL team?", choiceA : "Eagles",choiceB : "Falcons", ChoiceC : "Patriots", ChoiceD : "Cardinals", correct : A},
-    // {q: "What is the name of the Philadelphia MLB team?", a: "Phillies"},
-    // {q: "What is the name of the Philadelphia NBA team?", a: "76ers"},
-    // {q: "What is the name of the Philadelphia NHL team?", a: "Flyers"}
+    {q: "What is the name of the Philadelphia MLB team?", a: "Phillies"},
+    {q: "What is the name of the Philadelphia NBA team?", a: "76ers"},
+    {q: "What is the name of the Philadelphia NHL team?", a: "Flyers"}
 ]
 
 for(var i = 0; i < questions.length; i++){
